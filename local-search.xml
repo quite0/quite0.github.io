@@ -4,23 +4,50 @@
   
   
   <entry>
-    <title>测试文章</title>
-    <link href="/2022/07/16/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2022/07/16/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <title>解决Hexo图片显示问题</title>
+    <link href="/2022/07/16/%E8%A7%A3%E5%86%B3Hexo%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
+    <url>/2022/07/16/%E8%A7%A3%E5%86%B3Hexo%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<p>测试文章</p><img src="/2022/07/16/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/01.png" class title="第一张">]]></content>
+    <content type="html"><![CDATA[<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>博客搭建配置：<code>NodeJs + Hexo + Hexo Fluid + Git</code></p><p>博客搭建配置过于繁琐我就不说了，推荐一个教程吧。</p><p><a href="https://blog.csdn.net/yaorongke/article/details/119089190">博客搭建教程</a></p><p><a href="https://hexo.fluid-dev.com/docs/guide/#%E8%A6%86%E7%9B%96%E9%85%8D%E7%BD%AE">Hexo Fluid用户手册</a></p><p><a href="https://hexo.io/zh-cn/docs/front-matter">Hexo手册</a></p><p>图床配置是：<code> Github + PicGo + Typora</code></p><blockquote><p><code>NodeJs</code>：前端的东西</p><p><code>Hexo</code>：博客模板</p><p><code>Hexo Fluid</code>：博客主题</p><p><code>Git</code>：操作<code>github</code>的工具</p><p><code>GitHub</code>：全球最大同性交友平台</p><p><code>PicGo</code>：图床工具</p><p><code>Typora</code>：<code>markdown</code>笔记工具</p></blockquote><p>github国内访问有点慢，可以用CDN加速，我暂时没有用，以后可能补上。</p><p>还可以用<code>Gitee + PicGo + Typora</code>这套配置，网上有教程。Gitee是国产的，所以访问比较快。</p><p>被<code>Hexo</code>图片显示的问题折磨了半天，最后突发奇想终于想出了一个完美的解决方案（新手上路，误戳！）</p><h3 id="普通解决方案"><a href="#普通解决方案" class="headerlink" title="普通解决方案"></a>普通解决方案</h3><p>我使用的<code>Fluid</code>主题，可能只适用本主题，但是下面的图床解决方案是通用的。也推荐大家使用图床，因为普通解决方案非常繁琐。</p><ol><li>开启配置</li></ol><blockquote><p>于根目录<code>_config.yml</code>中找到配置<code>post_asset_folder</code>设置为<code>truepost_asset_folder: true</code></p></blockquote><ol start="2"><li>安装<code>hexo-asset-image</code></li></ol><blockquote><p>npm install <a href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a> –save</p></blockquote><ol start="3"><li>改变图路径</li></ol><blockquote><p>新的路径为：<code>&#123;% asset_img example.jpg This is an example image %&#125;</code></p><p>注意这是3个参数，<strong>缺一不可</strong></p><ol><li>asset_img</li><li>example.jpg：图片名字</li><li>This is an example image：图片解释</li></ol></blockquote><ol start="4"><li>重新上传部署到本地</li></ol><blockquote><p>hexo cl</p><p>hexo g</p><p>hexo s</p></blockquote><h3 id="图床解决方案"><a href="#图床解决方案" class="headerlink" title="图床解决方案"></a>图床解决方案</h3><p>大致流程：</p><ol><li>创建<code>github</code>仓库存放图片</li><li>获取一个<code>github</code>的<code>token</code></li><li>下载配置<code>PicGo</code></li><li>配置<code>Typora</code></li><li>配置<code>Hexo</code>博客主题</li></ol><h4 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h4><p>（<code>Github</code>账号应该都有吧）先创建一个仓库</p><ol><li>第一步</li></ol><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207161955232.png" alt="image-20220716195536412"></p><ol start="2"><li>第二步</li></ol><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162004918.png" alt="image-20220716200410236"></p><p>点击最下面的<code>Create repository</code>，创建完成</p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162006921.png" alt="image-20220716200612175"></p><ol start="3"><li>获取一个<code>Token</code></li></ol><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162021785.png" alt="image-20220716202151082"></p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162022795.png" alt="image-20220716202237084"></p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162023909.png" alt="image-20220716202323139"></p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162025239.png" alt="image-20220716202514582"></p><p>接下来点击<code>Generate token</code>就完成创建了，会得到一个很长的字符串。<strong>切记要将这个字符串复制记录下来，因为它只会显示一次，如果忘记了就要删掉重新创建</strong>。（本蒟蒻印象深刻捏）</p><h4 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h4><p>这个下载我就不说了，可自行百度，我介绍一下配置。</p><ol><li>配置</li></ol><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162018279.png" alt="image-20220716201804056"></p><ol start="2"><li>开启时间戳命名防止命名重复问题</li></ol><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162019610.png" alt="image-20220716201927356"></p><p>这样<code>PicGo</code>的配置也完成了</p><h4 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h4><p>点击<code>文件-&gt;偏好设置-&gt;图像</code></p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162032292.png" alt="image-20220716203159576"></p><p>第5步需要验证是否上传成功，成功显示如下</p><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207162034939.png" alt="image-20220716203413794"></p><p>设置好后再插入图片，图片就自动上传至我们设置好的<code>github</code>仓库上了。</p><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>嘿嘿，你以为这就完事了嘛。以上只是解决了图床上传的问题，如果只做这么多你会发现发布的博客到<code>Hexo</code>任然不会显示图片，在<code>Hexo</code>中还需要配置最后一步。</p><p>这里附上解决链接：<a href="https://www.jianshu.com/p/5b58ecce6443?u_atoken=799a9c8e-be8e-4393-b11c-b0e46761deac&u_asession=01cE6ErxBMj7SJNSNaaU0k8CqEB4qtl9uVbnjcXM7Um4GASje15Yy6-knZs5s-M_z3X0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-qMWhZRU20OoFG2XQYWOlUMKWrbBzYAhXhkL4v5_cjQmBkFo3NEHBv0PZUm6pbxQU&u_asig=05ziyfJknxjruoJgfG5MFw7llHKq3rk7saimmJsxIlqiQyZmvmu_FVsinHjGpBuPrufMRcmXTCy1sSeoftZhywv1XQ-Y9ZqHJmagovi2xpPohYzVRgxUD2w-L1IhzYHym85FtNYV5QaWXZTxF1K6Laijlpm3H9cr11mez_Z4Qk95P9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzdks02r9IXTLuL-ew3pDUMU19HaCrZpZjyCh0GmOkoxEdf9JIAkyKervFWgmMgV8j-3h9VXwMyh6PgyDIVSG1W-lXUn4tKocLa5wZIMScwFWODK7bhW2M-c7MIitG1svzQ1Tavrsom9Hj-n_rlj_78NBExnBGvTUpt2RGIaXA-pVmWspDxyAEEo4kbsryBKb9Q&u_aref=7IW+Ca5ivkdML1Q0pLI0LdJfppA=">链接</a></p><p>注：我使用的<code>Fluid</code>主题也用此法解决了，只不过路径有些许差别。</p><p>我的路径<code>E:\博客\themes\fluid\layout\_partials\head.ejs</code></p><p>最后的最后，以上只代表个人见解，如有错误欢迎留言指正！</p>]]></content>
     
     
     <categories>
       
-      <category>Java</category>
+      <category>Hexo</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>原创</tag>
+      <tag>Hexo</tag>
+      
+      <tag>图床</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo使用指南</title>
+    <link href="/2022/07/16/Hexo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    <url>/2022/07/16/Hexo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
+    
+    <content type="html"><![CDATA[<h3 id="文章标头"><a href="#文章标头" class="headerlink" title="文章标头"></a>文章标头</h3><table><thead><tr><th align="left">参数</th><th align="left">描述</th><th align="left">默认值</th></tr></thead><tbody><tr><td align="left"><code>layout</code></td><td align="left">布局</td><td align="left"><a href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td></tr><tr><td align="left"><code>title</code></td><td align="left">标题</td><td align="left">文章的文件名</td></tr><tr><td align="left"><code>date</code></td><td align="left">建立日期</td><td align="left">文件建立日期</td></tr><tr><td align="left"><code>updated</code></td><td align="left">更新日期</td><td align="left">文件更新日期</td></tr><tr><td align="left"><code>comments</code></td><td align="left">开启文章的评论功能</td><td align="left">true</td></tr><tr><td align="left"><code>tags</code></td><td align="left">标签（不适用于分页）</td><td align="left"></td></tr><tr><td align="left"><code>categories</code></td><td align="left">分类（不适用于分页）</td><td align="left"></td></tr><tr><td align="left"><code>permalink</code></td><td align="left">覆盖文章网址</td><td align="left"></td></tr><tr><td align="left"><code>excerpt</code></td><td align="left">Page excerpt in plain text. Use <a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">this plugin</a> to format the text</td><td align="left"></td></tr><tr><td align="left"><code>disableNunjucks</code></td><td align="left">Disable rendering of Nunjucks tag <code>&#123;&#123; &#125;&#125;</code>&#x2F;<code>&#123;% %&#125;</code> and <a href="https://hexo.io/docs/tag-plugins">tag plugins</a> when enabled</td><td align="left"></td></tr><tr><td align="left"><code>lang</code></td><td align="left">Set the language to override <a href="https://hexo.io/docs/internationalization#Path">auto-detection</a></td><td align="left">Inherited from <code>_config.yml</code></td></tr></tbody></table><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p><code>hexo -v</code></p><blockquote><p>查看hexo版本信息</p></blockquote><p><code>hexo new &quot;demo&quot;</code></p><blockquote><p>新建一篇&#96;&#96;demo.md&#96;的文章，并会生成同名的图片文件夹</p></blockquote><p><code>hexo cl || hexo clean</code></p><blockquote><p>清除缓存文件db.json与静态文件public</p></blockquote><p><code>hexo g || hexo generate</code></p><blockquote><p>生成静态文件public</p></blockquote><p><code>hexo d || hexo deploy</code></p><blockquote><p>部署public文件夹到github上</p></blockquote><p>可以将<code>hexo g -d</code>合用，生成public直接上传至github</p><p><code>hexo s || hexo server</code></p><blockquote><p>启动本地服务器</p></blockquote><p><img src="https://raw.githubusercontent.com/quite0/images/main/img/202207161924899.png" alt="image-20220716192413759"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
       
     </tags>
     
