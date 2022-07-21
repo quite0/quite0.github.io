@@ -22,7 +22,7 @@
     <meta name="description" content="配置博客搭建配置：NodeJs + Hexo + Hexo Fluid + Git 博客搭建配置过于繁琐我就不说了，推荐一个教程吧。 博客搭建教程 Hexo Fluid用户手册 Hexo手册 图床配置是： Github + PicGo + Typora  NodeJs：前端的东西 Hexo：博客模板 Hexo Fluid：博客主题 Git：操作github的工具 GitHub：全球最大同性交友平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决Hexo图片显示问题">
-<meta property="og:url" content="http://example.com/2022/07/16/%E8%A7%A3%E5%86%B3Hexo%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="http://example.com/2022/07/16/%E5%9B%BE%E5%BA%8A%E8%A7%A3%E5%86%B3Hexo%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="倾城诶">
 <meta property="og:description" content="配置博客搭建配置：NodeJs + Hexo + Hexo Fluid + Git 博客搭建配置过于繁琐我就不说了，推荐一个教程吧。 博客搭建教程 Hexo Fluid用户手册 Hexo手册 图床配置是： Github + PicGo + Typora  NodeJs：前端的东西 Hexo：博客模板 Hexo Fluid：博客主题 Git：操作github的工具 GitHub：全球最大同性交友平台">
 <meta property="og:locale" content="zh_CN">
@@ -38,10 +38,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/quite0/images/main/img/202207162032292.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/quite0/images/main/img/202207162034939.png">
 <meta property="article:published_time" content="2022-07-16T11:31:57.000Z">
-<meta property="article:modified_time" content="2022-07-17T03:34:49.450Z">
+<meta property="article:modified_time" content="2022-07-21T04:21:28.714Z">
 <meta property="article:author" content="倾城">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="图床">
+<meta property="article:tag" content="建站">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/quite0/images/main/img/202207161955232.png">
   
@@ -264,7 +265,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.6k 字
         
       </span>
     
@@ -275,7 +276,7 @@
         
         
         
-          12 分钟
+          14 分钟
         
       </span>
     
@@ -341,25 +342,16 @@
 <p><code>PicGo</code>：图床工具</p>
 <p><code>Typora</code>：<code>markdown</code>笔记工具</p>
 </blockquote>
-<p>github国内访问有点慢，可以用CDN加速，我暂时没有用，以后可能补上。</p>
-<p>还可以用<code>Gitee + PicGo + Typora</code>这套配置，网上有教程。Gitee是国产的，所以访问比较快。</p>
-<p>被<code>Hexo</code>图片显示的问题折磨了半天，最后突发奇想终于想出了一个完美的解决方案（新手上路，误戳！）</p>
+<p><code>github</code>国内访问有点慢，可以用CDN加速，但是我用的<code>vpn</code>，<code>CDN</code>加速有时候会失效，所以我没有使用<code>CDN</code>加速。</p>
+<p>还可以用<code>Gitee + PicGo + Typora</code>这套配置，亦或是使用专门做图床的网站，网上都有相应教程。</p>
 <h3 id="普通解决方案"><a href="#普通解决方案" class="headerlink" title="普通解决方案"></a>普通解决方案</h3><p>我使用的<code>Fluid</code>主题，可能只适用本主题，但是下面的图床解决方案是通用的。也推荐大家使用图床，因为普通解决方案非常繁琐。</p>
-<ol>
-<li>开启配置</li>
-</ol>
-<blockquote>
+<h4 id="开启配置"><a href="#开启配置" class="headerlink" title="开启配置"></a>开启配置</h4><blockquote>
 <p>于根目录<code>_config.yml</code>中找到配置<code>post_asset_folder</code>设置为<code>truepost_asset_folder: true</code></p>
 </blockquote>
-<ol start="2">
-<li>安装<code>hexo-asset-image</code></li>
-</ol>
-<blockquote>
+<h4 id="安装hexo-asset-image"><a href="#安装hexo-asset-image" class="headerlink" title="安装hexo-asset-image"></a>安装<code>hexo-asset-image</code></h4><blockquote>
 <p>npm install <a target="_blank" rel="noopener" href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a> –save</p>
 </blockquote>
-<ol start="3">
-<li>改变图路径</li>
-</ol>
+<h4 id="改变图路径"><a href="#改变图路径" class="headerlink" title="改变图路径"></a>改变图路径</h4><p>将每一个图片的路径更改，这样做的缺点是<strong>本地不能显示图片</strong>，只能上传后在浏览器访问到图片</p>
 <blockquote>
 <p>新的路径为：<code>&#123;% asset_img example.jpg This is an example image %&#125;</code></p>
 <p>注意这是3个参数，<strong>缺一不可</strong></p>
@@ -428,6 +420,9 @@
 <p>这里附上解决链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5b58ecce6443?u_atoken=799a9c8e-be8e-4393-b11c-b0e46761deac&u_asession=01cE6ErxBMj7SJNSNaaU0k8CqEB4qtl9uVbnjcXM7Um4GASje15Yy6-knZs5s-M_z3X0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-qMWhZRU20OoFG2XQYWOlUMKWrbBzYAhXhkL4v5_cjQmBkFo3NEHBv0PZUm6pbxQU&u_asig=05ziyfJknxjruoJgfG5MFw7llHKq3rk7saimmJsxIlqiQyZmvmu_FVsinHjGpBuPrufMRcmXTCy1sSeoftZhywv1XQ-Y9ZqHJmagovi2xpPohYzVRgxUD2w-L1IhzYHym85FtNYV5QaWXZTxF1K6Laijlpm3H9cr11mez_Z4Qk95P9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzdks02r9IXTLuL-ew3pDUMU19HaCrZpZjyCh0GmOkoxEdf9JIAkyKervFWgmMgV8j-3h9VXwMyh6PgyDIVSG1W-lXUn4tKocLa5wZIMScwFWODK7bhW2M-c7MIitG1svzQ1Tavrsom9Hj-n_rlj_78NBExnBGvTUpt2RGIaXA-pVmWspDxyAEEo4kbsryBKb9Q&u_aref=7IW+Ca5ivkdML1Q0pLI0LdJfppA=">链接</a></p>
 <p>注：我使用的<code>Fluid</code>主题也用此法解决了，只不过路径有些许差别。</p>
 <p>我的路径<code>E:\博客\themes\fluid\layout\_partials\head.ejs</code></p>
+<h3 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h3><h4 id="评论问题"><a href="#评论问题" class="headerlink" title="评论问题"></a>评论问题</h4><p>使用的<code>LeanCloud</code>实现评论功能，LeanCloud是分为<a target="_blank" rel="noopener" href="https://console.leancloud.cn/">国内版</a>和<a target="_blank" rel="noopener" href="https://console.leancloud.app/">国际版</a></p>
+<p>经我测试发现这两个版本都需要使用，我们<strong>使用国内版实现评论功能，使用国际版统计访问信息</strong>。因为它不同版本只能实现这两个对应功能</p>
+<h4 id="图片访问问题"><a href="#图片访问问题" class="headerlink" title="图片访问问题"></a>图片访问问题</h4><p>由于我的图床是放在<code>github</code>上面的，而<code>github</code>访问需要<code>vpn</code>，所以国内网络环境不能加载到网站图片，待我有时间改一下图床。</p>
 <p>最后的最后，以上只代表个人见解，如有错误欢迎留言指正！</p>
 
                 
@@ -450,6 +445,13 @@
   <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Hexo/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
 
       </span>
     
@@ -466,6 +468,8 @@
       
         <a href="/tags/%E5%9B%BE%E5%BA%8A/">#图床</a>
       
+        <a href="/tags/%E5%BB%BA%E7%AB%99/">#建站</a>
+      
     </div>
   
 </div>
@@ -477,7 +481,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>解决Hexo图片显示问题</div>
-      <div>http://example.com/2022/07/16/解决Hexo图片显示问题/</div>
+      <div>http://example.com/2022/07/16/图床解决Hexo图片显示问题/</div>
     </div>
     <div class="license-meta">
       
@@ -518,6 +522,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/07/21/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%95%99%E7%A8%8B/" title="域名解析教程--cloudflare">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">域名解析教程--cloudflare</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
